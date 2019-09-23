@@ -1,0 +1,63 @@
+.meal__wrapper
+    border-radius: 10px
+    padding: .5rem 1rem
+    margin: 2em 1em
+    h2
+        font-size: 20px
+        +font($font-archivo, 400)
+        margin-bottom: 0
+        margin-top: .25em
+        color: $dark-grey
+        text-transform: uppercase
+    hr
+        margin: 0
+
+.food__list
+    padding-left: 1rem
+    padding-right: 0
+    list-style: none
+    li
+        font-size: 20px
+        +font($font-montserrat, 300)
+        color: $dark-grey
+        margin: 5px 0
+        &:before
+            content: "\f111"
+            font-family: "Fontawesome"
+            display: inline-block
+            font-size: 10px
+            width: 1.5em
+            margin-left: -1.5em
+            vertical-align: middle
+    p
+        text-align: center
+        color: $dark-grey
+        margin: 1.5em 0
+    svg
+        font-size: .7em
+        vertical-align: middle
+        margin-left: .7em
+        color: $medium-grey
+        &:hover
+            cursor: pointer
+         
+.meal__wrapper--pink
+    +box-shadow($pink-shadow)
+    .food__list
+        li
+            &:before
+                color: $pink-shadow
+
+.meal__wrapper--yellow
+    +box-shadow($yellow-shadow)
+    .food__list
+        li
+            &:before
+                color: $yellow-shadow 
+
+.meal__wrapper--purple
+    +box-shadow($purple-shadow)
+    .food__list
+        li
+            &:before
+                color: $purple-shadow 
