@@ -1,22 +1,29 @@
 import React, { Component } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMinusCircle } from '@fortawesome/free-solid-svg-icons'
 
-export default class Meal extends Component {
-    constructor(props){
-        super(props);
-        this.state={
-            length: this.props.foodList.length
-        }
-    }
-    render() {
-        
-        return (
-            <div className={this.props.styleName + " meal__wrapper"}>
-                <h2>{this.props.meal}</h2>
+const Meal = ({foods,meal,styleName }) => {
+    const foodList = foods ? (
+        foods.map(function(food){
+            return <React.Fragment>
+                    <li key={food.id}>
+                        {food.name}
+                        <FontAwesomeIcon icon={faMinusCircle} />
+                    </li>
+                    </React.Fragment>
+        })
+    ):(
+       <p>No food added yet.</p>
+    )
+    return(
+        <div className={styleName + " meal__wrapper"}>
+                <h2>{meal}</h2>
                 <hr/>
                 <ul className="food__list">
-                    {this.state.length===0 ? <p>No food added yet.</p> : this.props.foodList}
+                {foodList}
                 </ul>
             </div>
-        )
-    }
+    )
 }
+export default Meal;
+
