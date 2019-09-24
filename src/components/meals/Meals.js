@@ -19,6 +19,14 @@ export default class Meals extends Component {
             {id: 3, name:'banana'},
         ]
     }
+    deleteFood = (id) =>{
+        let newFoodList = this.state.breakfast.filter(food =>{
+            return food.id != id
+        })
+        this.setState({
+            breakfast: newFoodList
+        })
+    }
     render() {
         
         return (
@@ -27,6 +35,7 @@ export default class Meals extends Component {
                     styleName="meal__wrapper--pink"
                     meal="breakfast"
                     foods={this.state.breakfast}
+                    deleteFood={this.deleteFood}
                 />
                 <Meal
                     styleName="meal__wrapper--yellow"

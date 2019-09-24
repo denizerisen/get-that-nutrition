@@ -1,16 +1,19 @@
 import React, { Component } from 'react'
+import {CSSTransition, TransitionGroup} from 'react-transition-group'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMinusCircle } from '@fortawesome/free-solid-svg-icons'
 
-const Meal = ({foods,meal,styleName }) => {
+const Meal = ({foods,meal,styleName, deleteFood }) => {
     const foodList = foods ? (
         foods.map(function(food){
-            return <React.Fragment>
-                    <li key={food.id}>
+            return (<CSSTransition key={food.id} timeout={2000} classNames="move">
+                    <li>
                         {food.name}
-                        <FontAwesomeIcon icon={faMinusCircle} />
+                        <FontAwesomeIcon icon={faMinusCircle}
+                        onClick={()=>{deleteFood(food.id)}}
+                        />
                     </li>
-                    </React.Fragment>
+                    </CSSTransition>)
         })
     ):(
        <p>No food added yet.</p>
@@ -20,7 +23,9 @@ const Meal = ({foods,meal,styleName }) => {
                 <h2>{meal}</h2>
                 <hr/>
                 <ul className="food__list">
+                <TransitionGroup>
                 {foodList}
+                </TransitionGroup>
                 </ul>
             </div>
     )
