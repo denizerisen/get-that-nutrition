@@ -1,6 +1,7 @@
 import React from 'react';
 import './css/main.css';
 import Meals from './components/meals/Meals'
+import IngredientInput from './components/form/IngredientInput'
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
         <Meals/>
       </div>
       <div className="column__nutrition">
+      <IngredientInput/>
       </div>
     </div>
   );
