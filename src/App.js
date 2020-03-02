@@ -38,10 +38,18 @@ function App() {
     setMeals(mutableMeals);
   };
 
+  const deleteAll = meal => {
+    let mutableMeals = JSON.parse(JSON.stringify(meals));
+
+    mutableMeals[meal] = [];
+
+    setMeals(mutableMeals);
+  };
+
   return (
     <div className="App grid">
       <div className="column__meal">
-        <Meals meals={meals} deleteFood={deleteFood} />
+        <Meals meals={meals} deleteFood={deleteFood} deleteAll={deleteAll} />
       </div>
       <div className="column__nutrition">
         <Form addFood={addFood} />

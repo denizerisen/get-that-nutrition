@@ -3,7 +3,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 
-const Meal = ({ foods, meal, styleName, deleteFood }) => {
+const Meal = ({ foods, meal, styleName, deleteFood, deleteAll }) => {
   const foodList = foods ? (
     foods.map(function(food) {
       return (
@@ -30,6 +30,13 @@ const Meal = ({ foods, meal, styleName, deleteFood }) => {
       <ul className="food__list">
         <TransitionGroup>{foodList}</TransitionGroup>
       </ul>
+      <button
+        onClick={() => {
+          deleteAll(meal);
+        }}
+      >
+        delete all
+      </button>
     </div>
   );
 };
