@@ -7,6 +7,7 @@ export default function Form(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
+
     addFood(foodVal, mealVal);
   };
 
@@ -29,9 +30,10 @@ export default function Form(props) {
         placeholder="enter food"
       />
       <select value={mealVal} onChange={e => handleMeal(e)}>
-        <option selected value="breakfast">
-          breakfast
+        <option selected disabled value="">
+          "please select meal"
         </option>
+        <option value="breakfast">breakfast</option>
         <option value="lunch">lunch</option>
         <option value="dinner">dinner</option>
       </select>

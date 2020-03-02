@@ -1,28 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import './css/main.css';
 import Meals from './components/meals/Meals';
 import Form from './components/form/form';
 
-const mealsjson = {
-  breakfast: [
-    { id: 1, name: 'banana' },
-    { id: 2, name: 'apple' },
-    { id: 3, name: 'banana' }
-  ],
-  lunch: [
-    { id: 1, name: 'banana' },
-    { id: 2, name: 'mango' },
-    { id: 3, name: 'banana' }
-  ],
-  dinner: [
-    { id: 1, name: 'banana' },
-    { id: 2, name: 'strawberry' },
-    { id: 3, name: 'banana' }
-  ]
-};
-
 function App() {
-  const [meals, setMeals] = useState(mealsjson);
+  const [meals, setMeals] = useState({ breakfast: [], lunch: [], dinner: [] });
+
+  useLayoutEffect(() => {
+    let mealList = localStorage.getItem('meals');
+    if (mealList) {
+      setMeals(JSON.parse(localStorage.getItem('meals')));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('meals', JSON.stringify(meals));
+  });
 
   const addFood = (food, meal) => {
     let mutableMeals = JSON.parse(JSON.stringify(meals));
